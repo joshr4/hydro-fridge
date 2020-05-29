@@ -1,5 +1,8 @@
+import { settings } from './config';
+import { Controller } from './controller';
 import express from 'express';
 
+const controller = new Controller(settings)
 const app = express();
 const port = 3000;
 app.get('/', (req, res) => {
