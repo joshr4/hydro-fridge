@@ -7,6 +7,7 @@ const config_1 = require("./config");
 const controller_1 = require("./controller");
 const express_1 = __importDefault(require("express"));
 const controller = new controller_1.Controller(config_1.settings);
+controller.start();
 const app = express_1.default();
 const port = 3000;
 app.get('/', (req, res) => {

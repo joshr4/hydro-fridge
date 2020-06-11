@@ -3,6 +3,8 @@ import { Controller } from './controller';
 import express from 'express';
 
 const controller = new Controller(settings)
+controller.start();
+
 const app = express();
 const port = 3000;
 app.get('/', (req, res) => {

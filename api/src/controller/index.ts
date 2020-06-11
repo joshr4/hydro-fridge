@@ -8,15 +8,23 @@ interface IOutputs {
 export class Controller {
   constructor(settings: ISettings) {
     this.settings = settings;
-    this.cycleInterval = 1000;
-    this.nextCycle();
   }
 
   inputs
   outputs: IOutputs;
   settings: ISettings;
   cycleCount = 0;
-  cycleInterval: number;
+  cycleInterval = 1000;
+  enableRun = false
+
+  start = () => {
+    this.enableRun = true;
+    this.nextCycle();
+  }
+
+  stop = () => {
+    this.enableRun = false;
+  }
 
   readTemps = () => {
     console.log('checking Temps IN');
@@ -57,6 +65,7 @@ export class Controller {
   }
 
   nextCycle = (lastCycleTime: number = 0) => {
+    if (this.enableRun) {
       setTimeout(async () => {
         try {
           console.clear();
@@ -72,6 +81,7 @@ export class Controller {
           console.log(`Cycle ${this.cycleCount} crashed`, e)
         }
       }, this.cycleInterval - lastCycleTime);
+    }
   }
 
   cycle = async (): Promise<void> => {
