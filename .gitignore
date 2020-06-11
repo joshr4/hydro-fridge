@@ -9,8 +9,8 @@
 /coverage
 
 # build files
-api/dist
-client/dist
+/api/dist
+/client/dist
 
 # misc
 .DS_Store
