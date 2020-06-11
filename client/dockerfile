@@ -1,0 +1,16 @@
+FROM node:latest
+EXPOSE 3001
+# Env
+ENV NODE_ENV dev
+ENV NODE_CONFIG_ENV dev
+# Create Directory for the Container
+WORKDIR /bindmount
+# Only copy the package.json file to work directory
+COPY ./ ./
+# Install all Packages
+RUN yarn install
+
+# TypeScript
+RUN npm run tsc
+# Start
+CMD [ "npm", "start2" ]
