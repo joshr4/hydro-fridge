@@ -1,0 +1,10 @@
+version: "3"
+services:
+  rpi:
+    build:
+      context: .
+      dockerfile: dockerfile
+    environment:
+      ENV_NAME: dev
+    ports:
+      - 3000:3000
